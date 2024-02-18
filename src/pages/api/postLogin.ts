@@ -8,7 +8,7 @@ export const postLogin = async (code: string) => {
     APIResponse<{
       accessToken: string;
       refreshToken: string;
-      initialProfile: boolean;
+      initProfile: boolean;
     }>
   >("api/v1/auth/kakao",
     {code}

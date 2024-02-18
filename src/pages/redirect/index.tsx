@@ -14,7 +14,7 @@ const Redirect = () => {
       const data = await postLogin(code);
       const accessToken = data.accessToken;
       const refreshToken = data.refreshToken;
-      const initialProfile = data.initialProfile;
+      const initProfile = data.initProfile;
 
       if (data) {
         setCookie("accessToken", accessToken, {
@@ -25,7 +25,7 @@ const Redirect = () => {
         });
       }
 
-      if (initialProfile) {
+      if (!initProfile) {
         router.push("/nickname");
         return;
       }
