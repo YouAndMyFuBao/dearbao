@@ -25,7 +25,7 @@ const Redirect = () => {
         });
       }
 
-      if (!initialProfile) {
+      if (initialProfile) {
         router.push("/nickname");
         return;
       }
