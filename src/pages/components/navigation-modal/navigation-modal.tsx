@@ -29,7 +29,7 @@ export default function NavigationModal({
             <button onClick={() => router.push("/account-setting")}>
               계정 설정
             </button>
-            <button>모아보기</button>
+            <button onClick={() => router.push("/collecting")}>모아보기</button>
             <button onClick={() => router.push("/inquire/make-inquire")}>
               문의하기
             </button>
