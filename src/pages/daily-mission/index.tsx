@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { getMission } from "../api/getMission";
+import { getFubaoMessage } from "../api/getFubaoMessage";
 import Intro from "./intro";
 
 const Index = () => {
@@ -9,12 +9,12 @@ const Index = () => {
 
   const router = useRouter();
 
-  const { data: missionData } = useQuery({
+  const { data: fubaoMessageData } = useQuery({
     queryKey: ["getMission"],
-    queryFn: () => getMission(),
+    queryFn: () => getFubaoMessage(),
   });
 
-  const nicknameFromApi = missionData?.data.nickname || "";
+  const nicknameFromApi = fubaoMessageData?.data.nickname || "";
 
   useEffect(() => {
     const currentTime = new Date();

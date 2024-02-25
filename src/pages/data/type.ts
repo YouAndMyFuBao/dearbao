@@ -5,7 +5,7 @@ export interface APIResponse<T> {
   data: T;
 }
 
-export type MissionData = {
+export type FubaoMessageData = {
   messageOpenTime: boolean;
   missionSuccess: boolean;
   nickname: string;
