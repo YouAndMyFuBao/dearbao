@@ -23,7 +23,7 @@ const Index = () => {
     const closingTime = new Date(currentTime);
 
     openingTime.setHours(9, 0, 0);
-    closingTime.setHours(20, 59, 59);
+    closingTime.setHours(21, 0, 0);
 
     if (currentTime >= openingTime && currentTime <= closingTime) {
       setIsOpen(true);

@@ -25,7 +25,7 @@ const Intro: React.FC<{ nickname: string }> = ({ nickname }) => {
   const isTimerOpen = currentHours >= 9 && currentHours < 21;
 
   const closingTime = new Date(currentTime);
-  closingTime.setHours(20, 59, 59);
+  closingTime.setHours(21, 0, 0);
 
   const restTimeUntilClosing = Math.max(
     closingTime.getTime() - currentTime.getTime()
