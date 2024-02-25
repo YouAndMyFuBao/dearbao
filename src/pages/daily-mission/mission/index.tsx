@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { postMission } from "@/pages/api/postMission";
 import { useRouter } from "next/router";
 
 const Excution = () => {
@@ -12,6 +13,12 @@ const Excution = () => {
     }
 
     setMissionText(textareaValue);
+  };
+
+  const handlePostMission = () => {
+    postMission(missionText);
+    window.alert("데일리 미션 제출 완료하였습니다");
+    router.push("/home");
   };
 
   return (
@@ -32,7 +39,7 @@ const Excution = () => {
             </div>
             <p>{missionText.length}/400</p>
           </div>
-          <button onClick={() => router.push("/home")} disabled={!missionText}>
+          <button onClick={handlePostMission} disabled={!missionText}>
             편지 보내기
           </button>
         </div>
