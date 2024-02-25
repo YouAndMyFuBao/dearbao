@@ -16,7 +16,9 @@ const Excution = () => {
 
   return (
     <div>
-      <header>뒤로가기</header>
+      <header>
+        <button onClick={() => router.back()}>뒤로가기</button>
+      </header>
       <main>
         <div>
           <div>데일리 미션 내용</div>
