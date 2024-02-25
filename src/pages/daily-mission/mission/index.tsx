@@ -19,7 +19,6 @@ const Excution = () => {
   });
 
   const dailyMissionContent = dailyMissionData?.data.content;
-  console.log("isButtonEndabled", isButtonEnabled);
 
   // 정제된 데일리미션 텍스트를 useState변수에 담음
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -29,7 +28,6 @@ const Excution = () => {
 
     setMissionText(textareaValue);
     setIsButtonEnabled(true);
-    console.log("isButtonEndabled", isButtonEnabled);
   };
 
   // 데일리 미션 텍스트 유효성 검사
@@ -59,7 +57,7 @@ const Excution = () => {
   const handlePostMission = () => {
     postMission(missionText);
     window.alert("데일리 미션 제출 완료하였습니다");
-    router.push("/home");
+    router.push("/daily-mission/sending");
   };
 
   return (
