@@ -60,7 +60,7 @@ const Intro: React.FC<{ nickname: string }> = ({ nickname }) => {
                 })
               }
             >
-              쪽지이미지 여기를 클릭하세요
+              데일리 미션 수행하러가기
             </button>
           </>
         ) : (

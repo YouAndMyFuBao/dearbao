@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getDailyMission } from "@/pages/api/getDailyMission";
 import { postMission } from "@/pages/api/postMission";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { SlangList } from "./constant/slang-list";
 
@@ -16,6 +16,23 @@ const Excution = () => {
   const { data: dailyMissionData } = useQuery({
     queryKey: ["getDailyMission"],
     queryFn: () => getDailyMission(),
+  });
+
+  const { mutate: mutatePostDailyMission } = useMutation({
+    mutationKey: ["postMission"],
+    mutationFn: () => postMission(missionText),
+    onSuccess: () => {
+      window.alert("데일리 미션 제출이 완료되었습니다.");
+      router.push("/daily-mission/sending");
+    },
+    onError: () => {
+      const postDailyMissionResponse = window.confirm(
+        "이미 수행한 데일리미션입니다. 홈으로 돌아가시겠습니까?"
+      );
+      if (postDailyMissionResponse) {
+        router.push("/home");
+      }
+    },
   });
 
   const dailyMissionContent = dailyMissionData?.data.content;
@@ -55,9 +72,7 @@ const Excution = () => {
 
   // 편지 보내기
   const handlePostMission = () => {
-    postMission(missionText);
-    window.alert("데일리 미션 제출 완료하였습니다");
-    router.push("/daily-mission/sending");
+    mutatePostDailyMission();
   };
 
   return (
