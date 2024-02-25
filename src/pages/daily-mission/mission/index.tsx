@@ -50,7 +50,7 @@ const Excution = () => {
   // 데일리 미션 텍스트 유효성 검사
   const textValidationFunction = (text: string) => {
     const isTextNone = text.length === 0 ? true : false;
-    const isTextOver = text.length >= 400 ? true : false;
+    const isTextOver = text.length > 400 ? true : false;
     const isLengthValid = !isTextNone && !isTextOver;
     const isSlangContained = SlangList.some((slang) => text.includes(slang));
 
