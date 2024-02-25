@@ -4,3 +4,15 @@ export interface APIResponse<T> {
   message: string;
   data: T;
 }
+
+export type FubaoMessageData = {
+  messageOpenTime: boolean;
+  missionSuccess: boolean;
+  nickname: string;
+  remainingTime: string;
+};
+
+export type DailyMissionData = {
+  content: string;
+  id: string;
+};
