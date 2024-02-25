@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-// import { getMission } from "@/pages/api/getMission";
-// import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 
 const Intro: React.FC<{ nickname: string }> = ({ nickname }) => {
@@ -10,6 +8,8 @@ const Intro: React.FC<{ nickname: string }> = ({ nickname }) => {
 
   // 데일리미션 열린 페이지 <- 버튼 통해 들어왔을 경우 대비
   const nicknameFromQuery = router.query.nickname;
+
+  const formattedNickname = nickname || nicknameFromQuery;
 
   useEffect(() => {
     const timerInterval = setInterval(() => {
@@ -43,12 +43,21 @@ const Intro: React.FC<{ nickname: string }> = ({ nickname }) => {
 
   return (
     <div>
-      <header>{nickname ? nickname : nicknameFromQuery} 임오</header>
+      <header>{formattedNickname} 임오</header>
       <main>
         {isTimerOpen ? (
           <>
             <strong>{dailyMissionTimer(restTimeUntilClosing)}</strong>
-            <button onClick={() => router.push("/daily-mission/mission")}>
+            <button
+              onClick={() =>
+                router.push({
+                  pathname: "/daily-mission/mission",
+                  query: {
+                    nickname: formattedNickname,
+                  },
+                })
+              }
+            >
               쪽지이미지 여기를 클릭하세요
             </button>
           </>

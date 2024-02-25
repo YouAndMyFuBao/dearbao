@@ -1,10 +1,20 @@
 import { useState } from "react";
+import { getDailyMission } from "@/pages/api/getDailyMission";
 import { postMission } from "@/pages/api/postMission";
+import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 
 const Excution = () => {
   const router = useRouter();
   const [missionText, setMissionText] = useState<string>("");
+  const nicknameFromQuery = router.query.nickname;
+
+  const { data: dailyMissionData } = useQuery({
+    queryKey: ["getDailyMission"],
+    queryFn: () => getDailyMission(),
+  });
+
+  const dailyMissionContent = dailyMissionData?.data.content;
 
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const textareaValue = e.target.value;
@@ -28,14 +38,14 @@ const Excution = () => {
       </header>
       <main>
         <div>
-          <div>데일리 미션 내용</div>
+          <div>{dailyMissionContent}</div>
           <div>
             <div>
               <textarea
                 value={missionText}
                 onChange={handleTextareaChange}
               ></textarea>
-              <p>From. 00000 이모</p>
+              <p>From. {nicknameFromQuery} 이모</p>
             </div>
             <p>{missionText.length}/400</p>
           </div>

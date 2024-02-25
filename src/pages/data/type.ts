@@ -11,3 +11,8 @@ export type FubaoMessageData = {
   nickname: string;
   remainingTime: string;
 };
+
+export type DailyMissionData = {
+  content: string;
+  id: string;
+};
