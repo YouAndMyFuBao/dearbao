@@ -11,6 +11,7 @@ const Intro: React.FC<{ nickname: string }> = ({ nickname }) => {
 
   const formattedNickname = nickname || nicknameFromQuery;
 
+  // 1초마다 currentTime에 현재시간 반영
   useEffect(() => {
     const timerInterval = setInterval(() => {
       setCurrentTime(new Date());
@@ -19,6 +20,7 @@ const Intro: React.FC<{ nickname: string }> = ({ nickname }) => {
     return () => clearInterval(timerInterval);
   }, []);
 
+  // 타이머 구현
   const currentHours = currentTime.getHours();
   const isTimerOpen = currentHours >= 9 && currentHours < 21;
 

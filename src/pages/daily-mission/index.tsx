@@ -16,6 +16,7 @@ const Index = () => {
 
   const nicknameFromApi = fubaoMessageData?.data.nickname || "";
 
+  // 09:00:00 ~ 20: 59:59에만 페이지가 열리고, 그 외의 시간에는 '오늘의 데일리 미션이 종료되었습니다'를 띄움
   useEffect(() => {
     const currentTime = new Date();
     const openingTime = new Date(currentTime);
