@@ -4,3 +4,10 @@ export interface APIResponse<T> {
   message: string;
   data: T;
 }
+
+export type MissionData = {
+  messageOpenTime: boolean;
+  missionSuccess: boolean;
+  nickname: string;
+  remainingTime: string;
+};

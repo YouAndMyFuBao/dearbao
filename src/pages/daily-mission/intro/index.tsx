@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
+// import { getMission } from "@/pages/api/getMission";
+// import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 
-const Intro = () => {
+const Intro: React.FC<{ nickname: string }> = ({ nickname }) => {
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
 
   const router = useRouter();
+
+  // 데일리미션 열린 페이지 <- 버튼 통해 들어왔을 경우 대비
+  const nicknameFromQuery = router.query.nickname;
 
   useEffect(() => {
     const timerInterval = setInterval(() => {
@@ -38,7 +43,7 @@ const Intro = () => {
 
   return (
     <div>
-      <header>OOOOO 임오</header>
+      <header>{nickname ? nickname : nicknameFromQuery} 임오</header>
       <main>
         {isTimerOpen ? (
           <>
